@@ -19,9 +19,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.example.citiesapp.viewmodel.CityModel
 import com.example.citiesapp.errorMessage
 import com.example.citiesapp.util.makeToast
+import com.example.citiesapp.viewmodel.CityModel
 
 @Composable
 fun DisplayDetails(cityModel: CityModel, id: Int) {
@@ -50,8 +50,9 @@ fun DisplayDetails(cityModel: CityModel, id: Int) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = city?.name ?: "", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+
             AsyncImage(
-                model = city?.imageurl,
+                model = city?.imageUrl,
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(150.dp),
                 contentScale = ContentScale.Crop

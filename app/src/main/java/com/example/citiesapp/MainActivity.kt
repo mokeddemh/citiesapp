@@ -8,12 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.citiesapp.navigation.Destination
+import com.example.citiesapp.repository.RepositoryHolder
 import com.example.citiesapp.screen.DisplayCities
 import com.example.citiesapp.screen.DisplayDetails
 import com.example.citiesapp.ui.theme.CitiesAppTheme
@@ -26,9 +26,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             CitiesAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val cityModel = ViewModelProvider(this)[CityModel::class.java]
                     val navController = rememberNavController()
-                    MainApp(navController,cityModel)
+                    MainApp(navController)
                 }
             }
         }
@@ -36,7 +35,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainApp(navController: NavHostController,cityModel: CityModel){
+fun MainApp(navController: NavHostController){
+    val cityModel = CityModel(RepositoryHolder.cityRepository)
     NavHost (navController = navController, startDestination = Destination.CityList.route) {
         composable(Destination.CityList.route) {
             DisplayCities(cityModel,navController)

@@ -1,8 +1,11 @@
 package com.example.citiesapp.entity
 
+import com.google.gson.annotations.SerializedName
+
 data class City (
-    val id: Int ,
+    val id: Int,
     val name: String,
-    val imageurl:String,
-    val description:String
+    @SerializedName("imageurl")
+    val imageUrl:String,
+    val description:String? = null
 )

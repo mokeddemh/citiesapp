@@ -1,7 +1,7 @@
 package com.example.citiesapp.service
 
-import com.example.citiesapp.entity.City
 import com.example.citiesapp.baseUrl
+import com.example.citiesapp.entity.City
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,13 +18,15 @@ interface Endpoint {
 
 
     companion object {
-        var endpoint: Endpoint? = null
-        fun createEndpoint(): Endpoint {
-            if(endpoint ==null) {
-                endpoint = Retrofit.Builder().baseUrl(baseUrl). addConverterFactory(GsonConverterFactory.create()).build(). create(
-                    Endpoint::class.java)
+        private var INSTANCE: Endpoint? = null
+        fun createInstance(): Endpoint {
+            if(INSTANCE ==null) {
+                INSTANCE = Retrofit.Builder().baseUrl(baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().
+                    create(Endpoint::class.java)
             }
-            return endpoint!!
+            return INSTANCE!!
         }
     }
 

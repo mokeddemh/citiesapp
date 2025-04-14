@@ -24,10 +24,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.example.citiesapp.viewmodel.CityModel
-import com.example.citiesapp.navigation.Destination
 import com.example.citiesapp.errorMessage
+import com.example.citiesapp.navigation.Destination
 import com.example.citiesapp.util.makeToast
+import com.example.citiesapp.viewmodel.CityModel
 
 
 @Composable
@@ -68,7 +68,7 @@ fun DisplayCities(cityModel: CityModel, navController: NavHostController) {
                     ) {
                         Text(text = it.name, fontSize = 16.sp, fontWeight = FontWeight.Bold)
                         AsyncImage(
-                            model = it.imageurl,
+                            model = it.imageUrl,
                             contentDescription = null,
                             modifier = Modifier.fillMaxWidth(),
                             contentScale = ContentScale.Crop

@@ -2,9 +2,7 @@ package com.example.citiesapp.repository
 
 import com.example.citiesapp.service.Endpoint
 
-object CityRepository {
-
-    private val endpoint = Endpoint.createEndpoint()
+class CityRepository(private val endpoint: Endpoint) {
 
     suspend fun getCities() = endpoint.getCities();
 

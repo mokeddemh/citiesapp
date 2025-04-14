@@ -7,7 +7,7 @@ import com.example.citiesapp.entity.City
 import com.example.citiesapp.repository.CityRepository
 import kotlinx.coroutines.launch
 
-class CityModel:ViewModel() {
+class CityModel(private val repository: CityRepository):ViewModel() {
     val cities =  mutableStateOf(emptyList<City>())
     val loading = mutableStateOf(false)
     val error = mutableStateOf(false)
@@ -16,7 +16,7 @@ class CityModel:ViewModel() {
      fun getCities() {
          loading.value = true
         viewModelScope.launch {
-            val response = CityRepository.getCities()
+            val response = repository.getCities()
             loading.value = false
             if(response.isSuccessful) {
                 cities.value = response.body()!!
@@ -33,7 +33,7 @@ class CityModel:ViewModel() {
     fun getCity(id:Int) {
         loading.value = true
         viewModelScope.launch {
-            val response = CityRepository.getCity(id)
+            val response = repository.getCity(id)
             loading.value = false
             if(response.isSuccessful) {
                 city.value = response.body()

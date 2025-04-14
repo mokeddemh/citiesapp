@@ -48,6 +48,9 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
    // navigation
     implementation ("androidx.navigation:navigation-compose:2.8.3")
+    //MockWebserver
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
