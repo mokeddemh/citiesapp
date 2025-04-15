@@ -46,9 +46,7 @@ class UnitTest {
         server.enqueue(MockResponse().setResponseCode(200).setBody(body) )
         val repository = CityRepository(endpoint)
         runBlocking {
-            val response = repository.getCities()
-            val list = response.body()
-            assertTrue(response.isSuccessful)
+            val list = repository.getCities()
             assertArrayEquals(expectedCities.toTypedArray(),list?.toTypedArray())
 
         }

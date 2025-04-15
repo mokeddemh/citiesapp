@@ -43,9 +43,7 @@ class IntegrationTest {
         )
 
         runBlocking {
-            val response  = repository.getCities()
-            val list  = response.body()
-            assertTrue(response.isSuccessful)
+            val list  = repository.getCities()
             assertArrayEquals(expectedCities.toTypedArray(),list?.toTypedArray())
         }
 
@@ -56,11 +54,9 @@ class IntegrationTest {
     fun testIntegrationGetCity() {
 
         runBlocking {
-            val response  = repository.getCity(1)
-            val city  = response.body()
-            assertTrue(response.isSuccessful)
-            assertEquals("Barcelone",city?.name)
-            assertNotNull(city?.description)
+            val city  = repository.getCity(1)
+            assertEquals("Barcelone",city.name)
+            assertNotNull(city.description)
         }
 
     }
