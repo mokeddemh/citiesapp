@@ -38,9 +38,6 @@ fun DisplayCities(cityModel: CityModel, navController: NavHostController) {
     val error = cityModel.error.value
 
 
-   LaunchedEffect(true) {
-        cityModel.getCities()
-    }
 
         if (loading) {
             Box(

@@ -14,6 +14,10 @@ class CityModel(private val repository: CityRepository):ViewModel() {
     val error = mutableStateOf(false)
     val city = mutableStateOf<City?>(null)
 
+    init {
+        getCities()
+    }
+
     fun getCities() {
         loading.value = true
         viewModelScope.launch {
